@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Yangtze.DAL.Models
+namespace Yangtze.DAL.Entities
 {
     public partial class User
     {
@@ -9,6 +9,7 @@ namespace Yangtze.DAL.Models
         {
             Cart = new HashSet<Cart>();
             Order = new HashSet<Order>();
+            Product = new HashSet<Product>();
             Transaction = new HashSet<Transaction>();
         }
 
@@ -26,6 +27,7 @@ namespace Yangtze.DAL.Models
 
         public virtual ICollection<Cart> Cart { get; set; }
         public virtual ICollection<Order> Order { get; set; }
+        public virtual ICollection<Product> Product { get; set; }
         public virtual ICollection<Transaction> Transaction { get; set; }
     }
 }

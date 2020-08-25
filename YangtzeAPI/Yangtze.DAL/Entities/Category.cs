@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Yangtze.DAL.Models
+namespace Yangtze.DAL.Entities
 {
     public partial class Category
     {

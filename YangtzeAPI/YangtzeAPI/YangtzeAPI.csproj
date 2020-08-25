@@ -14,7 +14,12 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Yangtze.BLL\Yangtze.BLL.csproj" />
     <ProjectReference Include="..\Yangtze.DAL\Yangtze.DAL.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="ResponseWrapper\" />
   </ItemGroup>
 
 

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Yangtze.DAL.Models
+namespace Yangtze.DAL.Entities
 {
     public partial class Product
     {
@@ -24,6 +24,7 @@ namespace Yangtze.DAL.Models
         public DateTime? UpdatedAt { get; set; }
 
         public virtual Category Category { get; set; }
+        public virtual User User { get; set; }
         public virtual ICollection<CartItem> CartItem { get; set; }
         public virtual ICollection<OrderItem> OrderItem { get; set; }
         public virtual ICollection<ProductReview> ProductReview { get; set; }

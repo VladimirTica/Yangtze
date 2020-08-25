@@ -7,6 +7,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "YangtzeAPI", "YangtzeAPI\Ya
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Yangtze.DAL", "Yangtze.DAL\Yangtze.DAL.csproj", "{043B587D-AC7A-4010-A414-C91A7E595447}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Yangtze.BLL", "Yangtze.BLL\Yangtze.BLL.csproj", "{D49142E7-AD33-4F16-A3BF-5EE7AE1554FA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{043B587D-AC7A-4010-A414-C91A7E595447}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{043B587D-AC7A-4010-A414-C91A7E595447}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{043B587D-AC7A-4010-A414-C91A7E595447}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D49142E7-AD33-4F16-A3BF-5EE7AE1554FA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D49142E7-AD33-4F16-A3BF-5EE7AE1554FA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D49142E7-AD33-4F16-A3BF-5EE7AE1554FA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D49142E7-AD33-4F16-A3BF-5EE7AE1554FA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

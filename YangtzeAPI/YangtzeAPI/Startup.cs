@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AutoMapper;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
@@ -10,7 +11,9 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
-using Yangtze.DAL.Models;
+using Yangtze.BLL.Services;
+using Yangtze.DAL.Entities;
+using Yangtze.DAL.Repositories;
 
 namespace YangtzeAPI
 {
@@ -29,8 +32,11 @@ namespace YangtzeAPI
             services.AddControllers();
             services.AddDbContext<YangtzeDBContext>(options =>
             {
-                options.UseSqlServer(@"Server=Vladimir\Vladimir;Database=YangtzeDB;Trusted_Connection=True;");
+                options.UseSqlServer(Configuration["ConnectionStrings:YangtzeDBConnectionString"]);
             });
+            services.AddScoped<IYangtzeRepository, YangtzeRepository>();
+            services.AddScoped<IYangtzeService, YangtzeService>();
+            services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

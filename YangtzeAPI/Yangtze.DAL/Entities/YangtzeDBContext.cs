@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
 
-namespace Yangtze.DAL.Models
+namespace Yangtze.DAL.Entities
 {
     public partial class YangtzeDBContext : DbContext
     {
@@ -31,8 +31,7 @@ namespace Yangtze.DAL.Models
         {
             if (!optionsBuilder.IsConfigured)
             {
-#warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
-                optionsBuilder.UseSqlServer("Server=Vladimir\\Vladimir;Database=YangtzeDB;Trusted_Connection=True");
+                optionsBuilder.UseSqlServer("Server=Vladimir\\Vladimir;Database=YangtzeDB;Trusted_Connection=True;");
             }
         }
 
@@ -221,6 +220,12 @@ namespace Yangtze.DAL.Models
                     .HasForeignKey(d => d.CategoryId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK_Product_Category");
+
+                entity.HasOne(d => d.User)
+                    .WithMany(p => p.Product)
+                    .HasForeignKey(d => d.UserId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_Product_User");
             });
 
             modelBuilder.Entity<ProductCategory>(entity =>
