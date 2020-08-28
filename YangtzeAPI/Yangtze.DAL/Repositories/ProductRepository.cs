@@ -8,7 +8,7 @@ using Yangtze.DAL.Entities;
 
 namespace Yangtze.DAL.Repositories
 {
-    public class YangtzeRepository : IYangtzeRepository
+    public class ProductRepository : IProductRepository
     {
         public async Task<List<Product>> GetProducts(int userId)
         {

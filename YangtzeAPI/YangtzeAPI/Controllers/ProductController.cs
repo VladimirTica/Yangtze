@@ -10,15 +10,16 @@ using Yangtze.BLL.Models;
 using Yangtze.BLL.Services;
 using Yangtze.DAL.Entities;
 using Yangtze.DAL.Repositories;
+using YangtzeAPI.Helper;
 
 namespace Yangtze.API.Controllers
 {
     [ApiController]
     [Route("api/{userId}/products")]
-    public class ProductController : ControllerBase
+    public class ProductController : ResponseWrapper
     {
-        private readonly IYangtzeService _service;
-        public ProductController(IYangtzeService service)
+        private readonly IProductService _service;
+        public ProductController(IProductService service)
         {
             _service = service;
         }
@@ -26,26 +27,26 @@ namespace Yangtze.API.Controllers
         [HttpGet(Name ="GetAllProducts")]
         public async Task<ActionResult<IEnumerable<ProductDto>>> GetProducts(int userId, [FromQuery] int? category)
         {
-            IEnumerable<ProductDto> result;
             if (category != null)
             {
-                result = await _service.GetProductsByCategoryAsync(userId, category.Value);
+                var result = await _service.GetProductsByCategoryAsync(userId, category.Value);
+                return ResponseGet(result);
             }
             else
             {
-                result = await _service.GetProductsAsync(userId);
+                var result = await _service.GetProductsAsync(userId);
+                return ResponseGet(result);
             }
-
-            return Ok(result);
         }
 
         [HttpGet("{productId}", Name = "GetProductById")]
         public async Task<ActionResult<ProductDto>> GetProduct(int userId, int productId)
         {
             var result = await _service.GetProductByIdAsync(userId, productId);
-            if (result == null)
+
+            if (result.Value == null)
             {
-                return NotFound();
+                return ResponseGet(result, $"Product with id of {productId} does not exist for user with id of {userId}");
             }
            
             return Ok(result);
@@ -60,12 +61,12 @@ namespace Yangtze.API.Controllers
             }
             var result = await _service.AddProductAsync(userId, product);
 
-            if (result == null)
+            if (result.Value == null)
             {
-                return BadRequest("Failed to create product!");
+                return ResponseGet(result, "Failed to create product!");
             }
 
-            return CreatedAtAction(nameof(GetProduct), new {userId= result.UserId, productId = result.ProductId }, result);
+            return ResponseGet(result);
         }
 
         [HttpPut("{productId}", Name = "UpdatePoduct")]
@@ -77,24 +78,24 @@ namespace Yangtze.API.Controllers
             }
 
             var result = await _service.UpdateProductAsync(userId, productId, product);
-            if (result == null)
+            if (result.Value == null)
             {
-                return StatusCode(StatusCodes.Status500InternalServerError, "Product cannot be updated");
+                return ResponseGet(result, "Product cannot be updated");
             }
 
-            return Ok(result);
+            return ResponseGet(result);
         }
 
         [HttpDelete("{productId}", Name ="Delete product")]
         public async Task<ActionResult<ProductDto>> DeleteProduct (int userId, int productId)
         {
             var result = await _service.DeleteProductAsync(userId, productId);
-            if(result == null)
+            if(result.Value == null)
             {
-                return NotFound();
+                return ResponseGet(result, $"Product with id of {productId} does not exist for user with id of {userId}");
             }
 
-            return Ok(result);
+            return ResponseGet(result);
         }
 
     }

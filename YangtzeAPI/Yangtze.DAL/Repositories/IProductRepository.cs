@@ -6,7 +6,7 @@ using Yangtze.DAL.Entities;
 
 namespace Yangtze.DAL.Repositories
 {
-    public interface IYangtzeRepository
+    public interface IProductRepository
     {
         Task<List<Product>> GetProducts(int userId);
         Task<List<Product>> GetProductsByCategory(int userId, int categoryId);

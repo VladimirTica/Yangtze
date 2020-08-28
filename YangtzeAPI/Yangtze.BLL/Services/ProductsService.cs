@@ -9,43 +9,43 @@ using Yangtze.DAL.Repositories;
 
 namespace Yangtze.BLL.Services
 {
-    public class YangtzeService : IYangtzeService
+    public class ProductService : IProductService
     {
-        private readonly IYangtzeRepository _repo;
+        private readonly IProductRepository _repo;
 
         public IMapper _mapper { get; }
 
-        public YangtzeService(IYangtzeRepository repo, IMapper mapper)
+        public ProductService(IProductRepository repo, IMapper mapper)
         {
             _repo = repo;
             _mapper = mapper;
         }
 
-        public async Task<IEnumerable<ProductDto>> GetProductsAsync(int userId)
+        public async Task<(int statusCode, IEnumerable<ProductDto> Value)> GetProductsAsync(int userId)
         {
             var result = await _repo.GetProducts(userId);
 
-            return _mapper.Map<IEnumerable<ProductDto>>(result);
+            return (200, _mapper.Map<IEnumerable<ProductDto>>(result));
         }
 
-        public async Task<IEnumerable<ProductDto>> GetProductsByCategoryAsync(int userId, int category)
+        public async Task<(int statusCode, IEnumerable<ProductDto> Value)> GetProductsByCategoryAsync(int userId, int category)
         {
             var result = await _repo.GetProductsByCategory(userId, category);
-            return _mapper.Map<IEnumerable<ProductDto>>(result);
+            return (200, _mapper.Map<IEnumerable<ProductDto>>(result));
         }
 
-        public async Task<ProductDto> GetProductByIdAsync(int userId, int productId)
+        public async Task<(int statusCode, ProductDto Value)> GetProductByIdAsync(int userId, int productId)
         {
             var result = await _repo.GetProductById(userId, productId);
 
-            return _mapper.Map<ProductDto>(result);
+            return (200, _mapper.Map<ProductDto>(result));
         }
 
-        public async Task<ProductDto> AddProductAsync(int userId, ProductForUpdateDto product)
+        public async Task<(int statusCode, ProductDto Value)> AddProductAsync(int userId, ProductForUpdateDto product)
         {
             if (product == null)
             {
-                return null;
+                return (400, null);
             }
 
             var productToAdd = _mapper.Map<Product>(product);
@@ -53,36 +53,36 @@ namespace Yangtze.BLL.Services
             productToAdd.CreatedAt = DateTime.Now;
             var result = await _repo.AddProduct(productToAdd);
 
-            return _mapper.Map<ProductDto>(result);
+            return (200, _mapper.Map<ProductDto>(result));
         }
 
-        public async Task<ProductDto> UpdateProductAsync(int userId, int productId, ProductForUpdateDto product)
+        public async Task<(int statusCode, ProductDto Value)> UpdateProductAsync(int userId, int productId, ProductForUpdateDto product)
         {
             var productToUpdate = await _repo.GetProductByIdForUser(userId, productId);
 
             if (productToUpdate == null)
             {
-                return null;
+                return (404, null);
             }
 
             _mapper.Map(product, productToUpdate);
             productToUpdate.UpdatedAt = DateTime.Now;
             var result = await _repo.UpdateProduct(productToUpdate);
 
-            return _mapper.Map<ProductDto>(result);
+            return (200, _mapper.Map<ProductDto>(result));
         }
 
-        public async Task<ProductDto> DeleteProductAsync(int userId, int productId)
+        public async Task<(int statusCode, ProductDto Value)> DeleteProductAsync(int userId, int productId)
         {
             var productToDelete = await _repo.GetProductById(userId, productId);
             if(productToDelete == null)
             {
-                return null;
+                return (404, null);
             }
 
             var deletedProduct = await _repo.DeleteProduct(productToDelete);
 
-            return _mapper.Map<ProductDto>(deletedProduct);
+            return (200, _mapper.Map<ProductDto>(deletedProduct));
         }
 
     }

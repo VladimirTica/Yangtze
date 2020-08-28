@@ -34,8 +34,11 @@ namespace YangtzeAPI
             {
                 options.UseSqlServer(Configuration["ConnectionStrings:YangtzeDBConnectionString"]);
             });
-            services.AddScoped<IYangtzeRepository, YangtzeRepository>();
-            services.AddScoped<IYangtzeService, YangtzeService>();
+            services.AddScoped<IProductRepository, ProductRepository>();
+            services.AddScoped<ICategoryRepository, CategoryRepository>();
+            services.AddScoped<IProductService, ProductService>();
+            services.AddScoped<ICategoryService, CategoryService>();
+
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
         }
 
