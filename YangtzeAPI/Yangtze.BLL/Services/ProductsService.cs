@@ -37,7 +37,10 @@ namespace Yangtze.BLL.Services
         public async Task<(int statusCode, ProductDto Value)> GetProductByIdAsync(int userId, int productId)
         {
             var result = await _repo.GetProductById(userId, productId);
-
+            if (result == null)
+            {
+                return (404, null);
+            }
             return (200, _mapper.Map<ProductDto>(result));
         }
 

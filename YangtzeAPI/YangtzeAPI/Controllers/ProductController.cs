@@ -49,7 +49,7 @@ namespace Yangtze.API.Controllers
                 return ResponseGet(result, $"Product with id of {productId} does not exist for user with id of {userId}");
             }
            
-            return Ok(result);
+            return ResponseGet(result);
         }
 
         [HttpPost(Name ="CreateProduct")]
