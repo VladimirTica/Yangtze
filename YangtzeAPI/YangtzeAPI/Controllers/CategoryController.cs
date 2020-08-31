@@ -78,9 +78,14 @@ namespace YangtzeAPI.Controllers
 
             var result = await _service.UpdateCategory(categoryId, category);
 
-            if (result.Value == null)
+            if (result.Value == null && result.statusCode == 404)
             {
                 return ResponseGet(result, $"Category with id of {categoryId} does not exist.");
+            }
+
+            else if (result.Value == null && result.statusCode == 400)
+            {
+                return ResponseGet(result, $"Failed to update category. Inappropriate parentId with value of {category.ParentId}.");
             }
 
             return ResponseGet(result);

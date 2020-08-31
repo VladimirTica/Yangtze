@@ -34,6 +34,14 @@ namespace Yangtze.DAL.Repositories
             }
         }
 
+        public async Task<List<Category>> GetSubcategories(int parentId)
+        {
+            using (var db = new YangtzeDBContext())
+            {
+                return await db.Category.Where(c => c.CategoryId == parentId).ToListAsync();
+            }
+        }
+
         public async Task<Category> AddCategory(Category categoryToAdd)
         {
             using (var db = new YangtzeDBContext())
@@ -91,6 +99,14 @@ namespace Yangtze.DAL.Repositories
                 var inUse = await db.Category.Include(c=>c.Product).FirstOrDefaultAsync(c => c.ParentId == categoryId || c.Product.Any(p=> p.CategoryId==categoryId));
 
                 return inUse != null ? true : false;
+            }
+        }
+
+        public async Task<List<Category>> GetAllCategories()
+        {
+            using (var db = new YangtzeDBContext())
+            {
+                return await db.Category.ToListAsync();
             }
         }
     }

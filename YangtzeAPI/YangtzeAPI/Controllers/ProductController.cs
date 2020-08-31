@@ -80,7 +80,7 @@ namespace Yangtze.API.Controllers
             var result = await _service.UpdateProductAsync(userId, productId, product);
             if (result.Value == null)
             {
-                return ResponseGet(result, "Product cannot be updated");
+                return ResponseGet(result, $"Product with id of {productId} does not exist for user with id of {userId}");
             }
 
             return ResponseGet(result);

@@ -11,9 +11,11 @@ namespace Yangtze.DAL.Repositories
         Task<List<Category>> GetMainCategories();
         Task<List<Category>> GetSubCategories(int parentId);
         Task<Category> GetCategory(int categoryId);
+        Task<List<Category>> GetSubcategories(int parentId);
         Task<Category> AddCategory(Category category);
         Task<Category> UpdateCategory(Category category);
         Task<Category> DeleteCategory(Category category);
         Task<bool> CategoryInUse(int categoryId);
+        Task<List<Category>> GetAllCategories();
     }
 }
