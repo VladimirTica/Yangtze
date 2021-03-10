@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
 
-namespace Yangtze.DAL.Entities
+namespace YangtzeAPI.Entities
 {
     public partial class YangtzeDBContext : DbContext
     {

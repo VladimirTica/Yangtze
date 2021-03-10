@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Yangtze.DAL.Entities
+namespace YangtzeAPI.Entities
 {
     public partial class User
     {
