@@ -29,7 +29,7 @@ namespace YangtzeAPI
             services.AddControllers();
             services.AddDbContext<YangtzeDBContext>(options =>
             {
-                options.UseSqlServer(@"Server=Vladimir\Vladimir;Database=YangtzeDB;Trusted_Connection=True;");
+                options.UseMySQL(Configuration.GetConnectionString("YangtzeDB"));
             });
         }
 
