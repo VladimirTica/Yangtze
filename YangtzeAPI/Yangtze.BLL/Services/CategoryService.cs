@@ -121,7 +121,7 @@ namespace Yangtze.BLL.Services
             }
 
             var subcategories = categories.Where(c => c.ParentId == categoryId).ToList();
-            if (subcategories.Any(c => c.CategoryId == parentId))
+            if (subcategories.Any(c => c.Id == parentId))
             {
                 return false;
             }
@@ -133,7 +133,7 @@ namespace Yangtze.BLL.Services
 
             foreach (var category in subcategories)
             {
-                result = ValidParentCategory(category.CategoryId, parentId, categories);
+                result = ValidParentCategory(category.Id, parentId, categories);
             }
 
             return result;

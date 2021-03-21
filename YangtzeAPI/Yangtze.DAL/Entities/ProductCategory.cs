@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace Yangtze.DAL.Entities
 {
-    public partial class ProductCategory
+    public partial class ProductCategory : BaseEntity
     {
         public int ProductId { get; set; }
         public int CategoryId { get; set; }

@@ -3,14 +3,12 @@ using System.Collections.Generic;
 
 namespace Yangtze.DAL.Entities
 {
-    public partial class Cart
+    public partial class Cart : BaseEntity
     {
         public Cart()
         {
             CartItem = new HashSet<CartItem>();
         }
-
-        public int CartId { get; set; }
         public int UserId { get; set; }
         public short Status { get; set; }
         public string FirstName { get; set; }

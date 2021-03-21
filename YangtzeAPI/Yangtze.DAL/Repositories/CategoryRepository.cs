@@ -30,7 +30,7 @@ namespace Yangtze.DAL.Repositories
         {
             using (var db = new YangtzeDBContext())
             {
-                return await db.Category.FirstOrDefaultAsync(c => c.CategoryId == categoryId);
+                return await db.Category.FirstOrDefaultAsync(c => c.Id == categoryId);
             }
         }
 
@@ -38,7 +38,7 @@ namespace Yangtze.DAL.Repositories
         {
             using (var db = new YangtzeDBContext())
             {
-                return await db.Category.Where(c => c.CategoryId == parentId).ToListAsync();
+                return await db.Category.Where(c => c.Id == parentId).ToListAsync();
             }
         }
 

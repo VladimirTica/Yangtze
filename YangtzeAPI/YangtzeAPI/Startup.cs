@@ -32,7 +32,7 @@ namespace YangtzeAPI
             services.AddControllers();
             services.AddDbContext<YangtzeDBContext>(options =>
             {
-                options.UseSqlServer(Configuration["ConnectionStrings:YangtzeDBConnectionString"]);
+                options.UseMySQL(Configuration.GetConnectionString("YangtzeDB"));
             });
             services.AddScoped<IProductRepository, ProductRepository>();
             services.AddScoped<ICategoryRepository, CategoryRepository>();

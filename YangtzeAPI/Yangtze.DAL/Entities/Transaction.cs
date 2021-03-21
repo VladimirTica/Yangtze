@@ -3,9 +3,8 @@ using System.Collections.Generic;
 
 namespace Yangtze.DAL.Entities
 {
-    public partial class Transaction
+    public partial class Transaction : BaseEntity
     {
-        public int TransactionId { get; set; }
         public int UserId { get; set; }
         public int OrderId { get; set; }
         public string Code { get; set; }

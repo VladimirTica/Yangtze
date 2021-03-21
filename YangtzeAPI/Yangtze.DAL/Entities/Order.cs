@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace Yangtze.DAL.Entities
 {
-    public partial class Order
+    public partial class Order : BaseEntity
     {
         public Order()
         {
@@ -11,7 +11,6 @@ namespace Yangtze.DAL.Entities
             Transaction = new HashSet<Transaction>();
         }
 
-        public int OrderId { get; set; }
         public int? UserId { get; set; }
         public double SubTotal { get; set; }
         public double TotalDiscount { get; set; }

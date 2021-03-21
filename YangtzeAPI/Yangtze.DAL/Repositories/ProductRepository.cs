@@ -30,7 +30,7 @@ namespace Yangtze.DAL.Repositories
         {
             using (var db = new YangtzeDBContext())
             {
-                return await db.Product.FirstOrDefaultAsync(p => p.UserId == userId && p.ProductId == id);
+                return await db.Product.FirstOrDefaultAsync(p => p.UserId == userId && p.Id == id);
             }
         }
 
@@ -38,7 +38,7 @@ namespace Yangtze.DAL.Repositories
         {
             using (var db = new YangtzeDBContext())
             {
-                return await db.Product.FirstOrDefaultAsync(p =>p.UserId==userId && p.ProductId == productId);
+                return await db.Product.FirstOrDefaultAsync(p =>p.UserId==userId && p.Id == productId);
             }
         }
 

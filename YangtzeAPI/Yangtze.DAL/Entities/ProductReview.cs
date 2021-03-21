@@ -3,14 +3,13 @@ using System.Collections.Generic;
 
 namespace Yangtze.DAL.Entities
 {
-    public partial class ProductReview
+    public partial class ProductReview : BaseEntity
     {
         public ProductReview()
         {
             InverseParent = new HashSet<ProductReview>();
         }
 
-        public int ReviewId { get; set; }
         public int ProductId { get; set; }
         public int? ParentId { get; set; }
         public string Title { get; set; }
