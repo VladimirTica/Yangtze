@@ -1,15 +1,9 @@
-﻿using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore.Metadata.Internal;
-using System;
+﻿using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using Yangtze.BLL.Models;
 using Yangtze.BLL.Services;
-using Yangtze.DAL.Entities;
-using Yangtze.DAL.Repositories;
+using Yangtze.DAL.HelperModels;
 using YangtzeAPI.Helper;
 
 namespace Yangtze.API.Controllers
@@ -25,18 +19,10 @@ namespace Yangtze.API.Controllers
         }
 
         [HttpGet(Name ="GetAllProducts")]
-        public async Task<ActionResult<IEnumerable<ProductDto>>> GetProducts(int userId, [FromQuery] int? category)
+        public async Task<ActionResult<IEnumerable<ProductDto>>> GetProducts(int userId, [FromQuery] QueryStringParameters queryParams)
         {
-            if (category != null)
-            {
-                var result = await _service.GetProductsByCategoryAsync(userId, category.Value);
+                var result = await _service.GetProductsAsync(userId, queryParams);
                 return ResponseGet(result);
-            }
-            else
-            {
-                var result = await _service.GetProductsAsync(userId);
-                return ResponseGet(result);
-            }
         }
 
         [HttpGet("{productId}", Name = "GetProductById")]

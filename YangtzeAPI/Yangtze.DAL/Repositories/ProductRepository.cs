@@ -5,16 +5,18 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Yangtze.DAL.Entities;
+using Yangtze.DAL.HelperModels;
+using Yangtze.DAL.Helpers;
 
 namespace Yangtze.DAL.Repositories
 {
     public class ProductRepository : IProductRepository
     {
-        public async Task<List<Product>> GetProducts(int userId)
+        public async Task<List<Product>> GetProducts(int userId, QueryStringParameters queryParams)
         {
             using (var db = new YangtzeDBContext())
             {
-                return await db.Product.Where(p=> p.UserId==userId).ToListAsync();
+                return await db.Product.Where(p=> p.UserId==userId).SortBy(queryParams).PageBy(queryParams).ToListAsync();
             }
         }
 

@@ -6,12 +6,10 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Yangtze.BLL\Yangtze.BLL.csproj" />
-    <ProjectReference Include="..\Yangtze.DAL\Yangtze.DAL.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="ResponseWrapper\" />
+    <Compile Remove="ResponseWrapper\**" />
+    <Content Remove="ResponseWrapper\**" />
+    <EmbeddedResource Remove="ResponseWrapper\**" />
+    <None Remove="ResponseWrapper\**" />
   </ItemGroup>
 
   <ItemGroup>
@@ -19,6 +17,15 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="5.0.4">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Yangtze.BLL\Yangtze.BLL.csproj" />
+    <ProjectReference Include="..\Yangtze.DAL\Yangtze.DAL.csproj" />
   </ItemGroup>
 
 

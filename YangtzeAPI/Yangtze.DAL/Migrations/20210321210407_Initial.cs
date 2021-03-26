@@ -15,8 +15,8 @@ namespace Yangtze.DAL.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("MySQL:ValueGenerationStrategy", MySQLValueGenerationStrategy.IdentityColumn),
                     ParentId = table.Column<int>(type: "int", nullable: true),
-                    Title = table.Column<string>(type: "text", nullable: true),
-                    Description = table.Column<string>(type: "text", nullable: true)
+                    Title = table.Column<string>(type: "varchar(100)", nullable: true),
+                    Description = table.Column<string>(type: "varchar(200)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -35,11 +35,11 @@ namespace Yangtze.DAL.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("MySQL:ValueGenerationStrategy", MySQLValueGenerationStrategy.IdentityColumn),
-                    FirstName = table.Column<string>(type: "text", nullable: true),
-                    LastName = table.Column<string>(type: "text", nullable: true),
-                    Username = table.Column<string>(type: "text", nullable: true),
-                    Mobile = table.Column<string>(type: "text", nullable: true),
-                    Email = table.Column<string>(type: "text", nullable: true),
+                    FirstName = table.Column<string>(type: "varchar(45)", nullable: true),
+                    LastName = table.Column<string>(type: "varchar(45)", nullable: true),
+                    Username = table.Column<string>(type: "varchar(45)", nullable: true),
+                    Mobile = table.Column<string>(type: "varchar(45)", nullable: true),
+                    Email = table.Column<string>(type: "varchar(45)", nullable: true),
                     PasswordHash = table.Column<byte[]>(type: "varbinary(4000)", nullable: true),
                     PasswordSalt = table.Column<byte[]>(type: "varbinary(4000)", nullable: true),
                     Status = table.Column<int>(type: "int", nullable: false),
@@ -60,18 +60,18 @@ namespace Yangtze.DAL.Migrations
                         .Annotation("MySQL:ValueGenerationStrategy", MySQLValueGenerationStrategy.IdentityColumn),
                     UserId = table.Column<int>(type: "int", nullable: false),
                     Status = table.Column<short>(type: "smallint", nullable: false),
-                    FirstName = table.Column<string>(type: "text", nullable: true),
-                    LastName = table.Column<string>(type: "text", nullable: true),
-                    Mobile = table.Column<string>(type: "text", nullable: true),
-                    Email = table.Column<string>(type: "text", nullable: true),
-                    City = table.Column<string>(type: "text", nullable: true),
-                    Province = table.Column<string>(type: "text", nullable: true),
-                    Country = table.Column<string>(type: "text", nullable: true),
-                    Line1 = table.Column<string>(type: "text", nullable: true),
-                    Line2 = table.Column<string>(type: "text", nullable: true),
+                    FirstName = table.Column<string>(type: "varchar(45)", nullable: true),
+                    LastName = table.Column<string>(type: "varchar(45)", nullable: true),
+                    Mobile = table.Column<string>(type: "varchar(45)", nullable: true),
+                    Email = table.Column<string>(type: "varchar(45)", nullable: true),
+                    City = table.Column<string>(type: "varchar(45)", nullable: true),
+                    Province = table.Column<string>(type: "varchar(45)", nullable: true),
+                    Country = table.Column<string>(type: "varchar(45)", nullable: true),
+                    Line1 = table.Column<string>(type: "varchar(45)", nullable: true),
+                    Line2 = table.Column<string>(type: "varchar(45)", nullable: true),
                     CreatedAt = table.Column<DateTime>(type: "datetime", nullable: false),
                     UpadatedAt = table.Column<DateTime>(type: "datetime", nullable: true),
-                    Desctiption = table.Column<string>(type: "text", nullable: true)
+                    Description = table.Column<string>(type: "varchar(200)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -96,21 +96,21 @@ namespace Yangtze.DAL.Migrations
                     Tax = table.Column<double>(type: "double", nullable: false),
                     Shipping = table.Column<double>(type: "double", nullable: false),
                     Total = table.Column<double>(type: "double", nullable: false),
-                    PromoCode = table.Column<string>(type: "text", nullable: true),
+                    PromoCode = table.Column<string>(type: "varchar(100)", nullable: true),
                     CodeDiscount = table.Column<double>(type: "double", nullable: false),
                     GrandTotal = table.Column<double>(type: "double", nullable: false),
-                    FirstName = table.Column<string>(type: "text", nullable: true),
-                    LastName = table.Column<string>(type: "text", nullable: true),
-                    Mobile = table.Column<string>(type: "text", nullable: true),
-                    Email = table.Column<string>(type: "text", nullable: true),
-                    Line1 = table.Column<string>(type: "text", nullable: true),
-                    Line2 = table.Column<string>(type: "text", nullable: true),
-                    City = table.Column<string>(type: "text", nullable: true),
-                    Province = table.Column<string>(type: "text", nullable: true),
-                    Country = table.Column<string>(type: "text", nullable: true),
+                    FirstName = table.Column<string>(type: "varchar(100)", nullable: true),
+                    LastName = table.Column<string>(type: "varchar(100)", nullable: true),
+                    Mobile = table.Column<string>(type: "varchar(100)", nullable: true),
+                    Email = table.Column<string>(type: "varchar(100)", nullable: true),
+                    Line1 = table.Column<string>(type: "varchar(100)", nullable: true),
+                    Line2 = table.Column<string>(type: "varchar(100)", nullable: true),
+                    City = table.Column<string>(type: "varchar(100)", nullable: true),
+                    Province = table.Column<string>(type: "varchar(100)", nullable: true),
+                    Country = table.Column<string>(type: "varchar(100)", nullable: true),
                     CreatedAt = table.Column<DateTime>(type: "datetime", nullable: false),
                     UpdatedAt = table.Column<DateTime>(type: "datetime", nullable: true),
-                    Description = table.Column<string>(type: "text", nullable: true)
+                    Description = table.Column<string>(type: "varchar(200)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -131,8 +131,8 @@ namespace Yangtze.DAL.Migrations
                         .Annotation("MySQL:ValueGenerationStrategy", MySQLValueGenerationStrategy.IdentityColumn),
                     UserId = table.Column<int>(type: "int", nullable: false),
                     CategoryId = table.Column<int>(type: "int", nullable: false),
-                    Title = table.Column<string>(type: "text", nullable: true),
-                    Description = table.Column<string>(type: "text", nullable: true),
+                    Title = table.Column<string>(type: "varchar(100)", nullable: true),
+                    Description = table.Column<string>(type: "varchar(200)", nullable: true),
                     Quantity = table.Column<int>(type: "int", nullable: false),
                     Price = table.Column<double>(type: "double", nullable: false),
                     Discount = table.Column<double>(type: "double", nullable: false),
@@ -164,13 +164,13 @@ namespace Yangtze.DAL.Migrations
                         .Annotation("MySQL:ValueGenerationStrategy", MySQLValueGenerationStrategy.IdentityColumn),
                     UserId = table.Column<int>(type: "int", nullable: false),
                     OrderId = table.Column<int>(type: "int", nullable: false),
-                    Code = table.Column<string>(type: "text", nullable: true),
+                    Code = table.Column<string>(type: "varchar(100)", nullable: true),
                     Type = table.Column<short>(type: "smallint", nullable: false),
                     Mode = table.Column<short>(type: "smallint", nullable: false),
                     Status = table.Column<short>(type: "smallint", nullable: false),
                     CreatedAt = table.Column<DateTime>(type: "datetime", nullable: false),
                     UpdatedAt = table.Column<DateTime>(type: "datetime", nullable: true),
-                    Description = table.Column<string>(type: "text", nullable: true)
+                    Description = table.Column<string>(type: "varchar(200)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -202,7 +202,7 @@ namespace Yangtze.DAL.Migrations
                     Quantity = table.Column<short>(type: "smallint", nullable: false),
                     CreatedAt = table.Column<DateTime>(type: "datetime", nullable: false),
                     UpdatedAt = table.Column<DateTime>(type: "datetime", nullable: true),
-                    Description = table.Column<string>(type: "text", nullable: true)
+                    Description = table.Column<string>(type: "varchar(200)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -234,7 +234,7 @@ namespace Yangtze.DAL.Migrations
                     Quantity = table.Column<short>(type: "smallint", nullable: false),
                     CreatedAt = table.Column<DateTime>(type: "datetime", nullable: false),
                     UpdatedAt = table.Column<DateTime>(type: "datetime", nullable: true),
-                    Description = table.Column<string>(type: "text", nullable: true)
+                    Description = table.Column<string>(type: "varchar(200)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -287,12 +287,12 @@ namespace Yangtze.DAL.Migrations
                         .Annotation("MySQL:ValueGenerationStrategy", MySQLValueGenerationStrategy.IdentityColumn),
                     ProductId = table.Column<int>(type: "int", nullable: false),
                     ParentId = table.Column<int>(type: "int", nullable: true),
-                    Title = table.Column<string>(type: "text", nullable: true),
+                    Title = table.Column<string>(type: "varchar(100)", nullable: true),
                     Rating = table.Column<short>(type: "smallint", nullable: true),
                     Published = table.Column<byte>(type: "tinyint", nullable: false),
                     CreatedAt = table.Column<DateTime>(type: "datetime", nullable: false),
                     PublishedAt = table.Column<DateTime>(type: "datetime", nullable: true),
-                    Description = table.Column<string>(type: "text", nullable: true)
+                    Description = table.Column<string>(type: "varchar(200)", nullable: true)
                 },
                 constraints: table =>
                 {

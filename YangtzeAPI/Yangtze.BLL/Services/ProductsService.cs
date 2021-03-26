@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Yangtze.BLL.Models;
 using Yangtze.DAL.Entities;
+using Yangtze.DAL.HelperModels;
 using Yangtze.DAL.Repositories;
 
 namespace Yangtze.BLL.Services
@@ -21,9 +22,9 @@ namespace Yangtze.BLL.Services
             _mapper = mapper;
         }
 
-        public async Task<(int statusCode, IEnumerable<ProductDto> Value)> GetProductsAsync(int userId)
+        public async Task<(int statusCode, IEnumerable<ProductDto> Value)> GetProductsAsync(int userId, QueryStringParameters queryParams)
         {
-            var result = await _repo.GetProducts(userId);
+            var result = await _repo.GetProducts(userId, queryParams);
 
             return (200, _mapper.Map<IEnumerable<ProductDto>>(result));
         }

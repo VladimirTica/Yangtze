@@ -131,5 +131,8 @@
       }
     }
   },
-  "defaultProject": "YangtzeClient"
+  "defaultProject": "YangtzeClient",
+  "cli": {
+    "analytics": false
+  }
 }

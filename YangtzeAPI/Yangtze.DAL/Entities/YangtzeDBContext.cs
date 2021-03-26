@@ -34,5 +34,6 @@ namespace Yangtze.DAL.Entities
                 optionsBuilder.UseMySQL("Server=rds-yangtze-dev.clmdd8isw4nl.eu-central-1.rds.amazonaws.com;Port=3306;Database=yangtze;Uid=VladimirDev;Pwd=1Vladimir3Tica!1;");
             }
         }
+
     }
 }
