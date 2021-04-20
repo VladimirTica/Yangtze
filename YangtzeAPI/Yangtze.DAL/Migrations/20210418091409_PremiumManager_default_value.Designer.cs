@@ -2,15 +2,17 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Yangtze.DAL.Entities;
 
 namespace Yangtze.DAL.Migrations
 {
     [DbContext(typeof(YangtzeDBContext))]
-    partial class YangtzeDBContextModelSnapshot : ModelSnapshot
+    [Migration("20210418091409_PremiumManager_default_value")]
+    partial class PremiumManager_default_value
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -404,9 +406,6 @@ namespace Yangtze.DAL.Migrations
                     b.Property<string>("FirstName")
                         .HasColumnType("text");
 
-                    b.Property<bool>("IsActive")
-                        .HasColumnType("tinyint(1)");
-
                     b.Property<DateTime?>("LastLogin")
                         .HasColumnType("datetime");
 
@@ -427,6 +426,9 @@ namespace Yangtze.DAL.Migrations
 
                     b.Property<DateTime>("RegisteredAt")
                         .HasColumnType("datetime");
+
+                    b.Property<int>("Status")
+                        .HasColumnType("int");
 
                     b.Property<string>("Username")
                         .HasColumnType("text");

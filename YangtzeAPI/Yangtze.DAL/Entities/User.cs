@@ -20,10 +20,10 @@ namespace Yangtze.DAL.Entities
         public string Email { get; set; }
         public byte[] PasswordHash { get; set; }
         public byte[] PasswordSalt { get; set; }
-        public int Status { get; set; }
+        public bool IsActive { get; set; } = true;
         public DateTime? LastLogin { get; set; }
         public DateTime RegisteredAt { get; set; }
-        public byte? PremiumMember { get; set; }
+        public byte PremiumMember { get; set; }
 
         public virtual ICollection<Cart> Cart { get; set; }
         public virtual ICollection<Order> Order { get; set; }

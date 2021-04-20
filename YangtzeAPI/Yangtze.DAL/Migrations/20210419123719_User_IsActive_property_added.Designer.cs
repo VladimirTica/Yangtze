@@ -2,15 +2,17 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Yangtze.DAL.Entities;
 
 namespace Yangtze.DAL.Migrations
 {
     [DbContext(typeof(YangtzeDBContext))]
-    partial class YangtzeDBContextModelSnapshot : ModelSnapshot
+    [Migration("20210419123719_User_IsActive_property_added")]
+    partial class User_IsActive_property_added
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

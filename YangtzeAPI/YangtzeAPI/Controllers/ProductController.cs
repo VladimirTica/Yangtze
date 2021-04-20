@@ -21,7 +21,7 @@ namespace Yangtze.API.Controllers
         [HttpGet(Name ="GetAllProducts")]
         public async Task<ActionResult<IEnumerable<ProductDto>>> GetProducts(int userId, [FromQuery] QueryStringParameters queryParams)
         {
-                var result = await _service.GetProductsAsync(userId, queryParams);
+                var result =  await _service.GetProductsAsync(userId, queryParams);
                 return ResponseGet(result);
         }
 

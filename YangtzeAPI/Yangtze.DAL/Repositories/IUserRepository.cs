@@ -6,10 +6,13 @@ using Yangtze.DAL.Entities;
 
 namespace Yangtze.DAL.Repositories
 {
-    public interface IAuthRepository
+    public interface IUserRepository
     {
+        Task<User> GetUserAsync(int id);
         Task<User> AddUserAsync (User user);
         Task<User> GetUserByUsernameAsync(string username);
         Task<bool> UserExists(string username);
+        Task<User> UpdatePassword(User user);
+        Task<User> DeleteUser(int id);
     }
 }

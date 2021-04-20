@@ -8,6 +8,8 @@ using Yangtze.DAL.Entities;
 
 namespace YangtzeAPI.Helper
 {
+    [ApiController]
+    [Route("api/[controller]")]
     public class ResponseWrapper : ResultFactory
     {
         protected ActionResult<T> ResponseGet<T>((int statusCode, T value) result, string message = "")

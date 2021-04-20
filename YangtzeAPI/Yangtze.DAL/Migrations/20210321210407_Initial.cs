@@ -45,7 +45,7 @@ namespace Yangtze.DAL.Migrations
                     Status = table.Column<int>(type: "int", nullable: false),
                     LastLogin = table.Column<DateTime>(type: "datetime", nullable: true),
                     RegisteredAt = table.Column<DateTime>(type: "datetime", nullable: false),
-                    PremiumMember = table.Column<byte>(type: "tinyint", nullable: true)
+                    PremiumMember = table.Column<byte>(type: "tinyint", defaultValueSql:"0")
                 },
                 constraints: table =>
                 {
